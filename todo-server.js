@@ -112,11 +112,11 @@ app.post('/deletetodo/:data', (req, res) => {
 });
 
 //Endpoint to Delete all tel numbers
-app.delete('/deletenums', (req, res) => {
+app.delete('/deletetodos', (req, res) => {
   db.collection(collName).deleteMany({}, function(err, obj) {
     if (err) throw err;
     //number of documents deleted
-    console.log(obj.result.n + " document(s) deleted");
+    console.log(obj.result.n + " todo(s) deleted");
   });
 
   return res.status(200).send({

@@ -85,9 +85,17 @@ let getToDo = () => {
   //window.location.reload();
 };
 
-let deleteAll = () => {
-  //delete all comments from db
-  //TBA...
+let deleteToDos = () => {
+
+  let content = $("#deleteAll").val();
+  $.ajax({
+      method: "DELETE",
+      url: "http://localhost:8888/deletetodos" + content
+    })
+    .done(function(msg) {
+      console.log("todos deleted: " + msg);
+    });
+
   window.location.reload();
 };
 
@@ -96,7 +104,7 @@ $(document).ready(() => {
   //console.log("ready")
   //select the delete button
   btn03 = document.querySelectorAll('button')[3];
-  btn03.addEventListener('click', deleteAll);
+  btn03.addEventListener('click', deleteToDos);
   btn02 = document.querySelectorAll('button')[2];
   btn02.addEventListener('click', deleteToDo);
   btn01 = document.querySelectorAll('button')[1];
